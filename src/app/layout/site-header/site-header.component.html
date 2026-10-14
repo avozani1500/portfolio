@@ -1,0 +1,32 @@
+<header class="site-header" [class.is-scrolled]="isScrolled()">
+  <div class="container header-inner">
+    <a class="brand" routerLink="/" aria-label="Natan Avozani, início">
+      <span class="brand-mark" aria-hidden="true">NA</span>
+      <span>Natan Avozani</span>
+    </a>
+
+    <div class="header-actions">
+      @for (link of externalLinks; track link.id) {
+        <a
+          class="external-link"
+          [class.is-linkedin]="link.id === 'linkedin'"
+          [class.is-github]="link.id === 'github'"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="'Abrir ' + link.label"
+          [attr.data-tooltip]="link.label"
+        >
+          @if (link.id === 'linkedin') {
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 3.5h14.4A1.3 1.3 0 0 1 20.5 4.8v14.4a1.3 1.3 0 0 1-1.3 1.3H4.8a1.3 1.3 0 0 1-1.3-1.3V4.8a1.3 1.3 0 0 1 1.3-1.3Z" /><path d="M7.3 10v6.8M7.3 7.2v.1M11.1 16.8V10m0 2.1a2.6 2.6 0 0 1 5.2 0v4.7" /></svg>
+          } @else {
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.6c.4.1.6-.2.6-.4v-1.5c-2.4.5-2.9-1-2.9-1-.4-1-.9-1.2-.9-1.2-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2 1 2.5.8.1-.6.3-1 .5-1.2-1.9-.2-3.9-1-3.9-4.2 0-.9.3-1.7.9-2.3-.1-.2-.4-1.1.1-2.2 0 0 .8-.3 2.3.9a8 8 0 0 1 4.2 0c1.5-1.2 2.3-.9 2.3-.9.5 1.1.2 2 .1 2.2.6.6.9 1.4.9 2.3 0 3.2-2 4-3.9 4.2.3.3.5.8.5 1.6v2.3c0 .2.2.5.6.4A8.5 8.5 0 0 0 12 3.5Z" /></svg>
+          }
+        </a>
+      }
+      <a class="projects-link" routerLink="/projetos">Projetos</a>
+      <app-palette-picker />
+      <app-theme-toggle />
+    </div>
+  </div>
+</header>

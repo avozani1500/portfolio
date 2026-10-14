@@ -1,0 +1,49 @@
+:host {
+  position: relative;
+  z-index: 100;
+  display: block;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  isolation: isolate;
+  overflow: visible;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  min-height: 4.5rem;
+  transition: border-color 220ms ease, background-color 220ms ease;
+}
+
+.header-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; min-height: 4.5rem; }
+.site-header.is-scrolled { border-bottom-color: transparent; background: color-mix(in srgb, var(--color-page) 94%, transparent); }
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--color-text); font-weight: 700; text-decoration: none; }
+.brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-accent); font-size: 0.75rem; }
+.header-actions { display: inline-flex; align-items: center; gap: .5rem; }
+.external-link, .projects-link {
+  position: relative;
+  display: inline-grid;
+  min-height: 2.25rem;
+  place-items: center;
+  padding: 0 .72rem;
+  border: 1px solid var(--color-border);
+  border-radius: .65rem;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: .8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+.external-link { width: 2.25rem; padding: 0; }
+.external-link svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+.external-link.is-github svg { fill: currentColor; stroke: none; }
+.external-link:hover, .external-link:focus-visible, .projects-link:hover, .projects-link:focus-visible { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 7%, transparent); color: var(--color-accent); transform: translateY(-1px); }
+.external-link::after { position: absolute; z-index: 10; top: calc(100% + .55rem); left: 50%; padding: .35rem .5rem; border: 1px solid var(--color-border); border-radius: .35rem; background: var(--color-surface-elevated); color: var(--color-text); content: attr(data-tooltip); font-size: .7rem; font-weight: 600; opacity: 0; pointer-events: none; transform: translate(-50%, -.2rem); transition: opacity 150ms ease, transform 150ms ease; white-space: nowrap; }
+.external-link:hover::after, .external-link:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .external-link, .projects-link { transition: none; }
+  .external-link:hover, .external-link:focus-visible, .projects-link:hover, .projects-link:focus-visible { transform: none; }
+}

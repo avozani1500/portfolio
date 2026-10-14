@@ -1,0 +1,420 @@
+:root {
+  --color-page: #e7ebef;
+  --color-surface-base: #e7ebef;
+  --color-surface: #f1f3f5;
+  --color-surface-elevated: #fafbfc;
+  --color-surface-emphasis: #d8dee5;
+  --color-surface-muted: #dde2e7;
+  --color-border: #c2cad3;
+  --color-text: #17202a;
+  --color-text-muted: #5f6b78;
+  --color-accent: #245a8d;
+  --color-accent-strong: #17436b;
+  --color-accent-soft: #dbe7f1;
+  --color-focus: #b76b00;
+  --shadow-subtle: 0 12px 30px rgb(23 32 42 / 0.08);
+
+  --asset-introduction-light: image-set(
+    url('/assets/brand/backgrounds/hero-light.avif') type('image/avif'),
+    url('/assets/brand/backgrounds/hero-light.webp') type('image/webp'),
+    url('/assets/brand/backgrounds/hero-light.png') type('image/png')
+  );
+  --asset-introduction-dark: image-set(
+    url('/assets/brand/backgrounds/hero-dark.avif') type('image/avif'),
+    url('/assets/brand/backgrounds/hero-dark.webp') type('image/webp'),
+    url('/assets/brand/backgrounds/hero-dark.png') type('image/png')
+  );
+  --asset-introduction-current: var(--asset-introduction-light);
+
+  --home-introduction-asset: var(--asset-introduction-current);
+  --home-introduction-asset-opacity: 0.24;
+  --home-introduction-asset-opacity-mobile: 0.28;
+  --home-introduction-asset-position: center;
+  --home-introduction-asset-position-mobile: 62% center;
+  --home-introduction-asset-size: cover;
+  --home-introduction-asset-size-mobile: auto 148%;
+  --home-introduction-base: #e7ebef;
+  --intro-ambient-image-opacity: 0.08;
+  --intro-ambient-structure-opacity: 0.10;
+  --hero-tech-ambient-opacity: 0.12;
+  --hero-tech-intro-opacity: 0.20;
+  --hero-tech-line: #30455a;
+  --hero-tech-grid: #52677b;
+  --hero-tech-fragment: #30455a;
+  --hero-tech-node: #245a8d;
+
+  --home-introduction-overlay:
+    linear-gradient(
+        90deg,
+        rgb(231 235 239 / 0.84) 0%,
+        rgb(231 235 239 / 0.70) 44%,
+        rgb(231 235 239 / 0.20) 76%,
+        rgb(231 235 239 / 0.48) 100%
+    ),
+    linear-gradient(
+        180deg,
+        rgb(231 235 239 / 0.92) 0%,
+        transparent 16%,
+        transparent 76%,
+        rgb(231 235 239 / 0.58) 100%
+    );
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --content-width: 72rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+}
+
+html[data-theme='dark'] {
+  --color-page: #090d12;
+  --color-surface-base: #090d12;
+  --color-surface: #0d131a;
+  --color-surface-elevated: #111923;
+  --color-surface-emphasis: #151f2a;
+  --color-surface-muted: #10171f;
+  --color-border: rgb(151 172 193 / 14%);
+  --color-text: #f2f5f7;
+  --color-text-muted: #9faab5;
+  --color-accent: #79b8f3;
+  --color-accent-strong: #9acbfa;
+  --color-accent-soft: rgb(121 184 243 / 10%);
+  --color-focus: #f0b35b;
+  --shadow-subtle: 0 16px 34px rgb(0 0 0 / 0.18);
+
+  --home-introduction-asset: var(--asset-introduction-dark);
+  --asset-introduction-current: var(--asset-introduction-dark);
+  --home-introduction-asset-opacity: 0.18;
+  --home-introduction-asset-opacity-mobile: 0.22;
+  --home-introduction-base: #090d12;
+  --intro-ambient-image-opacity: 0.13;
+  --intro-ambient-structure-opacity: 0.18;
+  --hero-tech-ambient-opacity: 0.18;
+  --hero-tech-intro-opacity: 0.26;
+  --hero-tech-line: #79b8f3;
+  --hero-tech-grid: #30455a;
+  --hero-tech-fragment: #f2f5f7;
+  --hero-tech-node: #79b8f3;
+
+  --home-introduction-overlay:
+    linear-gradient(
+        90deg,
+        rgb(9 13 18 / 0.94) 0%,
+        rgb(9 13 18 / 0.86) 44%,
+        rgb(9 13 18 / 0.34) 76%,
+        rgb(9 13 18 / 0.66) 100%
+    ),
+    linear-gradient(
+        180deg,
+        rgb(9 13 18 / 0.97) 0%,
+        transparent 20%,
+        transparent 76%,
+        rgb(9 13 18 / 0.80) 100%
+    );
+}
+
+/* Alternative palettes keep the same semantic tokens so the layout does not
+   need to know which visual identity is active. */
+html[data-palette='copper'][data-theme='light'] {
+  --color-page: #efe9df;
+  --color-surface-base: #efe9df;
+  --color-surface: #f5f1ea;
+  --color-surface-elevated: #fbf9f5;
+  --color-surface-emphasis: #e3d8ca;
+  --color-surface-muted: #e9e0d5;
+  --color-border: #d2c1b1;
+  --color-text: #282522;
+  --color-text-muted: #716963;
+  --color-accent: #9a6044;
+  --color-accent-strong: #76442f;
+  --color-accent-soft: #f0ddd2;
+  --color-focus: #9a6044;
+  --shadow-subtle: 0 12px 30px rgb(77 56 42 / 0.10);
+  --home-introduction-base: #efe9df;
+  --hero-tech-line: #9a6044;
+  --hero-tech-grid: #8f7867;
+  --hero-tech-fragment: #6f5a4b;
+  --hero-tech-node: #9a6044;
+  --home-introduction-overlay:
+    linear-gradient(
+      90deg,
+      rgb(239 233 223 / 0.88) 0%,
+      rgb(239 233 223 / 0.74) 44%,
+      rgb(239 233 223 / 0.24) 76%,
+      rgb(239 233 223 / 0.52) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(239 233 223 / 0.94) 0%,
+      transparent 18%,
+      transparent 76%,
+      rgb(239 233 223 / 0.62) 100%
+    );
+}
+
+html[data-palette='copper'][data-theme='dark'] {
+  --color-page: #151313;
+  --color-surface-base: #151313;
+  --color-surface: #1d1a18;
+  --color-surface-elevated: #25211e;
+  --color-surface-emphasis: #2c2622;
+  --color-surface-muted: #211d1a;
+  --color-border: rgb(208 154 104 / 20%);
+  --color-text: #f3eee8;
+  --color-text-muted: #b0a59b;
+  --color-accent: #d09a68;
+  --color-accent-strong: #efbe8d;
+  --color-accent-soft: rgb(208 154 104 / 12%);
+  --color-focus: #efbe8d;
+  --shadow-subtle: 0 16px 34px rgb(0 0 0 / 0.24);
+  --home-introduction-base: #151313;
+  --hero-tech-line: #d09a68;
+  --hero-tech-grid: #806551;
+  --hero-tech-fragment: #f3eee8;
+  --hero-tech-node: #efbe8d;
+  --home-introduction-overlay:
+    linear-gradient(
+      90deg,
+      rgb(21 19 19 / 0.95) 0%,
+      rgb(21 19 19 / 0.87) 44%,
+      rgb(21 19 19 / 0.38) 76%,
+      rgb(21 19 19 / 0.70) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(21 19 19 / 0.98) 0%,
+      transparent 20%,
+      transparent 76%,
+      rgb(21 19 19 / 0.84) 100%
+    );
+}
+
+html[data-palette='sage'][data-theme='light'] {
+  --color-page: #e7ece5;
+  --color-surface-base: #e7ece5;
+  --color-surface: #f0f3ed;
+  --color-surface-elevated: #f8faf6;
+  --color-surface-emphasis: #d6e0d4;
+  --color-surface-muted: #dfe7dd;
+  --color-border: #bccbbb;
+  --color-text: #202722;
+  --color-text-muted: #637066;
+  --color-accent: #647d62;
+  --color-accent-strong: #466048;
+  --color-accent-soft: #dce8da;
+  --color-focus: #647d62;
+  --shadow-subtle: 0 12px 30px rgb(49 69 52 / 0.10);
+  --home-introduction-base: #e7ece5;
+  --hero-tech-line: #647d62;
+  --hero-tech-grid: #789077;
+  --hero-tech-fragment: #536a55;
+  --hero-tech-node: #647d62;
+  --home-introduction-overlay:
+    linear-gradient(
+      90deg,
+      rgb(231 236 229 / 0.88) 0%,
+      rgb(231 236 229 / 0.74) 44%,
+      rgb(231 236 229 / 0.24) 76%,
+      rgb(231 236 229 / 0.52) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(231 236 229 / 0.94) 0%,
+      transparent 18%,
+      transparent 76%,
+      rgb(231 236 229 / 0.62) 100%
+    );
+}
+
+html[data-palette='sage'][data-theme='dark'] {
+  --color-page: #111612;
+  --color-surface-base: #111612;
+  --color-surface: #192019;
+  --color-surface-elevated: #212b21;
+  --color-surface-emphasis: #283428;
+  --color-surface-muted: #1c251c;
+  --color-border: rgb(155 181 141 / 20%);
+  --color-text: #f0f3ed;
+  --color-text-muted: #aab5aa;
+  --color-accent: #9bb58d;
+  --color-accent-strong: #c1d7b5;
+  --color-accent-soft: rgb(155 181 141 / 12%);
+  --color-focus: #c1d7b5;
+  --shadow-subtle: 0 16px 34px rgb(0 0 0 / 0.24);
+  --home-introduction-base: #111612;
+  --hero-tech-line: #9bb58d;
+  --hero-tech-grid: #5f795c;
+  --hero-tech-fragment: #f0f3ed;
+  --hero-tech-node: #c1d7b5;
+  --home-introduction-overlay:
+    linear-gradient(
+      90deg,
+      rgb(17 22 18 / 0.95) 0%,
+      rgb(17 22 18 / 0.87) 44%,
+      rgb(17 22 18 / 0.38) 76%,
+      rgb(17 22 18 / 0.70) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(17 22 18 / 0.98) 0%,
+      transparent 20%,
+      transparent 76%,
+      rgb(17 22 18 / 0.84) 100%
+    );
+}
+
+html[data-palette='terracotta'][data-theme='light'] {
+  --color-page: #f0e7e2;
+  --color-surface-base: #f0e7e2;
+  --color-surface: #f7f0ec;
+  --color-surface-elevated: #fcf8f5;
+  --color-surface-emphasis: #e5d4cc;
+  --color-surface-muted: #ebddd7;
+  --color-border: #d7b9ad;
+  --color-text: #2a2422;
+  --color-text-muted: #756965;
+  --color-accent: #a8543f;
+  --color-accent-strong: #7d392d;
+  --color-accent-soft: #f1d9d1;
+  --color-focus: #a8543f;
+  --home-introduction-base: #f0e7e2;
+  --hero-tech-line: #a8543f;
+  --hero-tech-grid: #a47b6d;
+  --hero-tech-fragment: #76584f;
+  --hero-tech-node: #a8543f;
+}
+
+html[data-palette='terracotta'][data-theme='dark'] {
+  --color-page: #171312;
+  --color-surface-base: #171312;
+  --color-surface: #211a18;
+  --color-surface-elevated: #2a211f;
+  --color-surface-emphasis: #332724;
+  --color-surface-muted: #251d1b;
+  --color-border: rgb(212 135 111 / 21%);
+  --color-text: #f5eeeb;
+  --color-text-muted: #b8a8a1;
+  --color-accent: #d4876f;
+  --color-accent-strong: #f0aa93;
+  --color-accent-soft: rgb(212 135 111 / 13%);
+  --color-focus: #f0aa93;
+  --home-introduction-base: #171312;
+  --hero-tech-line: #d4876f;
+  --hero-tech-grid: #8c5b4f;
+  --hero-tech-fragment: #f5eeeb;
+  --hero-tech-node: #f0aa93;
+}
+
+html[data-palette='violet'][data-theme='light'] {
+  --color-page: #eceaf2;
+  --color-surface-base: #eceaf2;
+  --color-surface: #f5f3f8;
+  --color-surface-elevated: #fbfaff;
+  --color-surface-emphasis: #ddd9e8;
+  --color-surface-muted: #e4e1ec;
+  --color-border: #c4bdd5;
+  --color-text: #24212b;
+  --color-text-muted: #6d6877;
+  --color-accent: #7655a6;
+  --color-accent-strong: #5a3d86;
+  --color-accent-soft: #e5ddf2;
+  --color-focus: #7655a6;
+  --home-introduction-base: #eceaf2;
+  --hero-tech-line: #7655a6;
+  --hero-tech-grid: #9285a9;
+  --hero-tech-fragment: #635875;
+  --hero-tech-node: #7655a6;
+}
+
+html[data-palette='violet'][data-theme='dark'] {
+  --color-page: #15131b;
+  --color-surface-base: #15131b;
+  --color-surface: #1e1a27;
+  --color-surface-elevated: #272131;
+  --color-surface-emphasis: #30283d;
+  --color-surface-muted: #231e2d;
+  --color-border: rgb(182 154 232 / 21%);
+  --color-text: #f3eff8;
+  --color-text-muted: #aaa1b8;
+  --color-accent: #b69ae8;
+  --color-accent-strong: #cfb9f5;
+  --color-accent-soft: rgb(182 154 232 / 13%);
+  --color-focus: #cfb9f5;
+  --home-introduction-base: #15131b;
+  --hero-tech-line: #b69ae8;
+  --hero-tech-grid: #75638f;
+  --hero-tech-fragment: #f3eff8;
+  --hero-tech-node: #cfb9f5;
+}
+
+html[data-palette='amber'][data-theme='light'] {
+  --color-page: #f0ece1;
+  --color-surface-base: #f0ece1;
+  --color-surface: #f8f5ec;
+  --color-surface-elevated: #fdfbf5;
+  --color-surface-emphasis: #e5dcc8;
+  --color-surface-muted: #ebe4d4;
+  --color-border: #d4c3a0;
+  --color-text: #29261f;
+  --color-text-muted: #756e60;
+  --color-accent: #a36b1f;
+  --color-accent-strong: #7d4f15;
+  --color-accent-soft: #f1e3bd;
+  --color-focus: #a36b1f;
+  --home-introduction-base: #f0ece1;
+  --hero-tech-line: #a36b1f;
+  --hero-tech-grid: #9f8b63;
+  --hero-tech-fragment: #766548;
+  --hero-tech-node: #a36b1f;
+}
+
+html[data-palette='amber'][data-theme='dark'] {
+  --color-page: #17150f;
+  --color-surface-base: #17150f;
+  --color-surface: #211e16;
+  --color-surface-elevated: #2b261b;
+  --color-surface-emphasis: #352f21;
+  --color-surface-muted: #272218;
+  --color-border: rgb(215 169 91 / 21%);
+  --color-text: #f5f1e7;
+  --color-text-muted: #b6ae9d;
+  --color-accent: #d7a95b;
+  --color-accent-strong: #edc77e;
+  --color-accent-soft: rgb(215 169 91 / 13%);
+  --color-focus: #edc77e;
+  --home-introduction-base: #17150f;
+  --hero-tech-line: #d7a95b;
+  --hero-tech-grid: #897448;
+  --hero-tech-fragment: #f5f1e7;
+  --hero-tech-node: #edc77e;
+}
+
+html[data-palette='terracotta'],
+html[data-palette='violet'],
+html[data-palette='amber'] {
+  --home-introduction-overlay:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--home-introduction-base) 90%, transparent) 0%,
+      color-mix(in srgb, var(--home-introduction-base) 74%, transparent) 44%,
+      color-mix(in srgb, var(--home-introduction-base) 22%, transparent) 76%,
+      color-mix(in srgb, var(--home-introduction-base) 54%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--home-introduction-base) 94%, transparent) 0%,
+      transparent 18%,
+      transparent 76%,
+      color-mix(in srgb, var(--home-introduction-base) 62%, transparent) 100%
+    );
+}

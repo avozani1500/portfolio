@@ -1,0 +1,87 @@
+@use './styles/tokens';
+@use './styles/typography';
+@use './styles/utilities';
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--color-page);
+  color-scheme: dark;
+  scroll-behavior: auto;
+  scroll-padding-top: 8rem;
+}
+
+html[data-theme='dark'] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+body.intro-active app-site-header,
+body.intro-active app-site-footer,
+body.intro-active .home-progress,
+body.intro-active .stage:not(.stage-introduction),
+body.intro-active .stage-introduction .introduction-grid {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.intro-active .stage-introduction {
+  min-height: 100svh;
+}
+
+.hero-tech-scene {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  contain: paint;
+  pointer-events: none;
+  opacity: var(--hero-tech-ambient-opacity);
+  transition: opacity 700ms ease;
+}
+
+.hero-tech-structure { display: block; width: 100%; height: 100%; overflow: visible; }
+.hero-tech-lines { fill: none; stroke: var(--hero-tech-line); stroke-width: 1.2; stroke-linecap: square; stroke-dasharray: 8 11; opacity: .8; }
+.hero-tech-grid { stroke: var(--hero-tech-grid); stroke-width: 1; stroke-dasharray: none; opacity: .55; }
+.hero-tech-fragments { fill: var(--hero-tech-fragment); opacity: .72; }
+.hero-tech-nodes { fill: var(--hero-tech-node); opacity: .9; }
+body.intro-active .hero-tech-scene { opacity: .02; }
+body.intro-active .hero-tech-lines,
+body.intro-active .hero-tech-grid,
+body.intro-active .hero-tech-fragments,
+body.intro-active .hero-tech-nodes { opacity: 0; }
+
+body.intro-active app-site-header,
+body.intro-active app-site-footer,
+body.intro-active .home-progress,
+body.intro-active .stage:not(.stage-introduction) {
+  transition: opacity 360ms ease, visibility 0s linear 360ms;
+}
+
+a { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

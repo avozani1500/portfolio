@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR" class="intro-preboot">
+  <head>
+    <meta charset="utf-8">
+    <title>Natan Avozani — Desenvolvedor Full Stack</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfólio de Natan Avozani, desenvolvedor Full Stack com experiência em Java, Spring Boot, Angular, PostgreSQL, APIs REST e sistemas web.">
+    <meta name="theme-color" content="#090D12">
+    <style>
+      html.intro-preboot,
+      html.intro-preboot body { background: #090D12; }
+      html.intro-preboot body { overflow: hidden; }
+      html.intro-preboot app-root { visibility: hidden; opacity: 0; }
+      html.intro-running app-root { visibility: visible; opacity: 1; }
+      html.intro-running app-intro-loader { visibility: visible !important; opacity: 1 !important; }
+      html.intro-running body { overflow: hidden; }
+      html.intro-preboot::after,
+      html[data-intro-boot='pending']::after { position: fixed; z-index: 999; top: 50%; left: 50%; width: 34px; height: 1px; content: ''; background: #79B8F3; opacity: .72; transform: translate(-50%, -50%); animation: intro-boot-signal 220ms ease-out both; }
+      html.intro-running app-site-header,
+      html.intro-running app-site-footer,
+      html.intro-running .home-progress,
+      html.intro-running .stage:not(.stage-introduction),
+      html.intro-running .stage-introduction .introduction-grid { opacity: 0; visibility: hidden; pointer-events: none; }
+      html.intro-disabled app-intro-loader { display: none; }
+      html.intro-preboot .stage-introduction,
+      html.intro-running .stage-introduction { min-height: 100svh; background: #090D12 !important; }
+      html.intro-disabled body { overflow: auto; }
+      html[data-theme='light'].intro-preboot,
+      html[data-theme='light'].intro-preboot body { background: #e7ebef; }
+      html[data-theme='light'].intro-preboot::after,
+      html[data-theme='light'][data-intro-boot='pending']::after { background: #245A8D; }
+      html[data-theme='light'].intro-preboot .stage-introduction,
+      html[data-theme='light'].intro-running .stage-introduction { background: #e7ebef !important; }
+      @keyframes intro-boot-signal { from { opacity: 0; transform: translate(-50%, -50%) scaleX(.2); } 38% { opacity: .72; } to { opacity: 0; transform: translate(-50%, -50%) scaleX(1); } }
+    </style>
+    <script>
+      (() => {
+        try {
+          const storageKey = 'natan-portfolio:intro:v2';
+          const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+          const forceIntro = isDevelopment && new URLSearchParams(window.location.search).get('intro') === '1';
+          const visited = localStorage.getItem(storageKey) === 'presented';
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const isHome = window.location.pathname === '/' || window.location.pathname === '';
+          if (isHome && (!visited || forceIntro) && !reduced) {
+            document.documentElement.setAttribute('data-intro-pending', '');
+            document.documentElement.setAttribute('data-intro-boot', 'pending');
+          } else {
+            document.documentElement.classList.remove('intro-preboot');
+            document.documentElement.classList.add('intro-disabled');
+          }
+        } catch {
+          document.documentElement.classList.remove('intro-preboot');
+          document.documentElement.classList.add('intro-disabled');
+        }
+      })();
+    </script>
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem('portfolio-theme');
+          const theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark';
+          const savedPalette = localStorage.getItem('portfolio-palette');
+          const palette = savedPalette === 'technical' || savedPalette === 'copper' || savedPalette === 'sage' || savedPalette === 'terracotta' || savedPalette === 'violet' || savedPalette === 'amber'
+            ? savedPalette
+            : 'technical';
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.setAttribute('data-palette', palette);
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.setAttribute('data-palette', 'technical');
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
